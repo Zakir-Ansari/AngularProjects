@@ -1,0 +1,61 @@
+<h1 id="title">Employee Management System</h1>
+
+<ul>
+    <li><a class="employee-list active" >Employees List</a></li>
+    <li><a class="add-employee" [routerLink]="'/addEmployee'">Add Employees</a></li>
+</ul>
+
+
+<div ng-app="myApp" ng-controller="charactersCtrl" *ngIf="show">
+    <label>Filter by:</label><br>
+    <input id="search-bar" [(ngModel)]="searchText" placeholder="Search by name">
+
+    <div id="count" *ngIf="show">Total Number of Employees: {{totalNumberOfEmployees}}</div>
+
+
+    <table class="home-table-view">
+        <th>Emp ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr *ngFor="let employee of employees | filter : 'name' :searchText">
+            <td><a (click)="showEmployeeDetails(employee.id)" style="color: blue;">{{employee.id}}</a></td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.location}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.mobile}}</td>
+            <td><button class="edit-button" [routerLink]="['/editEmployee',employee.id]">Edit{{employee.id}}</button>
+            </td>
+            <td><button class="delete-button" (click)="deleteEmployee(employee.id)">Delete{{employee.id}}</button></td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="!show">
+    <h2>Employee Details</h2>
+    <table *ngFor="let employee of employeeDetails">
+        <tr>
+            <td>ID:</td>
+            <td>{{employee.id}}</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{employee.name}}</td>
+        </tr>
+        <tr>
+            <td>Location:</td>
+            <td>{{employee.location}}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{employee.email}}</td>
+        </tr>
+        <tr>
+            <td>Mobile:</td>
+            <td>{{employee.mobile}}</td>
+        </tr>
+    </table>
+    <button (click)="showEmployeeDetails(0)" >Back</button>
+</div>

@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+.home-table-view ,.home-table-view th,.home-table-view td {
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+a, button {
+    cursor: pointer;
+}
+li {list-style-type: none;
+    cursor: pointer;
+    display: inline;
+}
+li a {
+    margin: 10px;
+}
+
+.employee-list , .add-employee{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.employee-list:hover , .add-employee:hover {
+    color: blue;
+}
+
+.home-table-view table {
+    padding: 1px;
+}
+.home-table-view th, .home-table-view tr {
+    padding: 3px 30px;
+}
+.home-table-view td {
+    text-align: center;
+}
+.edit-button, .delete-button {
+    width: 95px;
+    text-align: center;
+}
+
+.add-employee-form {
+    border: 1px solid rgb(58, 54, 54);
+    width: 600px;
+    border-radius: 5px;
+}
+.add-employee-form form {
+    padding: 30px 50px
+}
+
+#edit, #add {
+    margin-top: 10px;
+    margin-left: 120px;
+    font-weight: bolder;
+}
+
+#search-bar {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#count {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.active {
+    font-weight: bolder;
+}

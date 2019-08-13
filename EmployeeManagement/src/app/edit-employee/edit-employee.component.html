@@ -1,0 +1,46 @@
+<h1 id="title">Employee Management System</h1>
+
+
+<ul>
+        <li><a class="employee-list" routerLink=''>Employees List</a></li>
+        <li><a class="add-employee" [routerLink]="'/addEmployee'">Add Employees</a></li>
+    </ul>
+    
+    <h3 *ngIf = "exists">Edit Employee</h3>
+    <!--Here: #Employee is the parameter that will be passed throud a method to add-employees.component-->
+    <div class="add-employee-form" *ngIf = "exists">
+    <form id="formEditEmployee " name="formEditEmployee" #Employee="ngForm" (ngSubmit)="editEmployee(Employee.value)">
+    
+        <table>
+            <tr>
+                <td><label>Employee Name: </label></td>
+                <td><input type="text" name="name" id="name" #uname="ngModel" placeholder="name" minlength="3" [(ngModel)]="data.name" ngModel></td>
+                <td>
+                    <div *ngIf="uname.errors?.minlength" style="font-size: 10px;">
+                        Name must be at least 3 characters long.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Location: </label></td>
+                <td>
+                    <select id="location" name="location" [(ngModel)]="data.location">
+                        <option *ngFor="let location of locations">{{location}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Email: </label></td>
+                <td><input type="text" name="email" id="email" placeholder="email" [(ngModel)]="data.email" ngModel></td>
+            </tr>
+            <tr>
+                <td><label>Mobile: </label></td>
+                <td><input type="text" name="mobile" id="mobile" placeholder="mobile" [(ngModel)]="data.mobile" ngModel></td>
+            </tr>
+        </table>
+    
+        <button id="edit">Update</button>
+    </form>
+    </div>
+    <div *ngIf = "!exists"><p>No user exits with given string..</p></div>
+    <h5 *ngIf = "isAdded">{{confirmationString}}</h5>

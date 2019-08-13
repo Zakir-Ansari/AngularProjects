@@ -1,0 +1,44 @@
+<h1 id="title">Employee Management System</h1>
+
+<ul>
+    <li><a class="employee-list" routerLink=''>Employees List</a></li>
+    <li><a class="add-employee active">Add Employees</a></li>
+</ul>
+
+<h3>Add Employee</h3>
+<!--Here: #Employee is the parameter that will be passed throud a method to add-employees.component-->
+<div class="add-employee-form">
+    <form id="formNewEmployee " name="formNewEmployee" #Employee="ngForm" (ngSubmit)="addNewEmployee(Employee.value)">
+
+        <table>
+            <tr>
+                <td><label>Employee Name: </label></td>
+                <td><input type="text" name="name" id="name" #uname="ngModel" minlength="3" placeholder="name" ngModel></td>
+                <td>
+                    <div *ngIf="uname.errors?.minlength" style="font-size: 10px;">
+                        Name must be at least 3 characters long.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Location: </label></td>
+                <td>
+                    <select id="location" name="location" [(ngModel)]="location">
+                        <option *ngFor="let location of locations">{{location}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Email: </label></td>
+                <td><input type="text" name="email" id="email" placeholder="email" ngModel></td>
+            </tr>
+            <tr>
+                <td><label>Mobile: </label></td>
+                <td><input type="text" name="mobile" id="mobile" placeholder="mobile" ngModel></td>
+            </tr>
+        </table>
+
+        <button id="add">Submit</button>
+    </form>
+</div>
+<h5 *ngIf="isAdded">{{confirmationString}}</h5>
