@@ -8,7 +8,7 @@
 
 <div ng-app="myApp" ng-controller="charactersCtrl" *ngIf="show">
     <label>Filter by:</label><br>
-    <input id="search-bar" [(ngModel)]="searchText" placeholder="Search by name">
+    <input id="filter" [(ngModel)]="searchText" placeholder="Search by name">
 
     <div id="count" *ngIf="show">Total Number of Employees: {{totalNumberOfEmployees}}</div>
 
