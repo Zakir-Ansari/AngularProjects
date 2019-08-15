@@ -34,8 +34,13 @@
             </tr>
             <tr>
                 <td><label>Mobile: </label></td>
-                <td><input type="text" name="mobile" id="mobile" placeholder="mobile" ngModel></td>
+                <td><input type="text" name="mobile" id="mobile" #mob="ngModel" required minlength="8" maxlength="10" placeholder="mobile" ngModel></td>
             </tr>
+            <td>
+                <div *ngIf="mob.errors?.minlength" style="font-size: 10px;">
+                    Mobile no. should be of length of 8 to 10
+                </div>
+            </td>
         </table>
 
         <button id="add">Submit</button>
