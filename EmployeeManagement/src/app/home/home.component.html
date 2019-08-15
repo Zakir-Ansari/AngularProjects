@@ -8,7 +8,7 @@
 
 <div ng-app="myApp" ng-controller="charactersCtrl" *ngIf="show">
     <label>Filter by:</label><br>
-    <input id="filter" [(ngModel)]="searchText" placeholder="Search by name">
+    <input id="search-bar" [(ngModel)]="searchText" placeholder="Search by name">
 
     <div id="count" *ngIf="show">Total Number of Employees: {{totalNumberOfEmployees}}</div>
 
@@ -21,15 +21,15 @@
         <th>Mobile</th>
         <th>Edit</th>
         <th>Delete</th>
-        <tr *ngFor="let employee of employees | filter : 'name' :searchText">
-            <td><a (click)="showEmployeeDetails(employee.id)" style="color: blue;">{{employee.id}}</a></td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.location}}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.mobile}}</td>
-            <td><button class="edit-button" [routerLink]="['/editEmployee',employee.id]">Edit{{employee.id}}</button>
+        <tr *ngFor="let employee of employees | filter : 'name' :searchText; let i = index">
+            <td ><a (click)="showEmployeeDetails(employee.id)" style="color: blue;">{{employee.id}}</a></td>
+            <td id="{{'name'+i}}">{{employee.name}}</td>
+            <td id="{{'loc'+i}}">{{employee.location}}</td>
+            <td id="{{'email'+i}}">{{employee.email}}</td>
+            <td id="{{'mob'+i}}">{{employee.mobile}}</td>
+            <td><button id="{{'Edit'+i}}"  class="edit-button" [routerLink]="['/editEmployee',employee.id]">Edit{{employee.id}}</button>
             </td>
-            <td><button class="delete-button" (click)="deleteEmployee(employee.id)">Delete{{employee.id}}</button></td>
+            <td><button id="{{'Delete'+i}}" class="delete-button" (click)="deleteEmployee(employee.id)">Delete{{employee.id}}</button></td>
         </tr>
     </table>
 </div>
